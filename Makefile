@@ -35,7 +35,8 @@ Q_OBJS = kernel_qemu/boot.o \
          kernel_qemu/keyboard.o \
          kernel_qemu/libc.o \
          kernel_qemu/fs.o \
-         kernel_qemu/shell.o
+         kernel_qemu/shell.o \
+         kernel_qemu/desktop.o
 
 .PHONY: all clean qemu dev
 
@@ -51,6 +52,8 @@ kernel_qemu/%.o: kernel_qemu/%.asm
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
+kernel_qemu/desktop.o: kernel_qemu/desktop.c
+	$(CC) $(CFLAGS) -c kernel_qemu/desktop.c -o kernel_qemu/desktop.o
 
 # Launch QEMU with the kernel image
 qemu: kernel.bin

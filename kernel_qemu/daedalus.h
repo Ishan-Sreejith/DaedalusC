@@ -104,3 +104,9 @@ void        shell_free(ShellState *s);
 void        shell_execute(ShellState *s, const char *line, int from_loop);
 void        shell_prompt(ShellState *s);
 void        shell_interrupt(ShellState *s);
+
+/* ─── desktop.c prototypes ─────────────────────────────────────────────────── */
+void desktop_clear(uint8_t color);
+void desktop_draw_window(int x, int y, int w, int h, uint8_t color, const char *title);
+void desktop_draw_icon(int x, int y, char c, uint8_t color);
+void desktop_demo(void);

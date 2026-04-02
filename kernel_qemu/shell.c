@@ -910,6 +910,14 @@ void shell_execute(ShellState *s, const char *raw_line, int from_loop) {
     return;
   }
 
+  /* ── desktop ─────────────────────────────────────────────── */
+  if (strcmp(cmd, "desktop") == 0) {
+    extern void desktop_demo(void);
+    desktop_demo();
+    if (!from_loop) shell_prompt(s);
+    return;
+  }
+
   /* ── Command not found ─────────────────────────────────────── */
   char err[MAX_NAME + 32];
   snprintf(err, sizeof(err), "daedalus: %s: command not found", cmd);
